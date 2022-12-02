@@ -1,15 +1,10 @@
 (ns convert
-  {:nextjournal.clerk/visibility {:code :hide
-                                  :result :hide}}
-  (:require [cheshire.core :as json]
-            [puget.printer :as puget]
-
-            ;; [notespace.api :as note]
-            ;; [notespace.kinds :as k]
-            [nextjournal.clerk :as clerk]
-            [clojure.java.io :as io])
-  (:import [javax.imageio ImageIO]
-           [java.nio.file Paths Files]))
+  #:nextjournal.clerk{:visibility {:code :hide, :result :hide}}
+  (:require
+   [cheshire.core :as json]
+   [clojure.java.io :as io]
+   [nextjournal.clerk :as clerk]
+   [puget.printer :as puget]))
 
 (comment
   (clerk/serve! {:browse true})
@@ -94,14 +89,6 @@
                            (map collect-info)
                            (partition-all 3))))
                                      
-
-(hiccup.core/html
- [:tr {:height "100px"
-        :style "color:green"}
-
-   (make-td (first infos))
-   (make-td (second infos))
-   (make-td (get (vec infos) 2))])
 
 ^{:nextjournal.clerk/visibility {:code :hide
                                  :result :show}
