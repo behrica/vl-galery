@@ -8,8 +8,8 @@
  :deps {
         org.clojure/clojure      {:mvn/version "1.10.3"}
         scicloj/tablecloth       {:mvn/version "6.012"}
-        scicloj/notespace        {:mvn/version "3-beta9"}
-        scicloj/scicloj.ml       {:mvn/version "0.1.0-beta4"}
+        cheshire/cheshire {:mvn/version "5.11.0"}
+        io.github.nextjournal/clerk {:mvn/version "0.12.699"}
         mvxcvi/puget             {:mvn/version "1.3.1"}}
 
 
@@ -18,6 +18,15 @@
         
 
  :aliases {
+           :nextjournal/clerk
+           {:exec-fn nextjournal.clerk/build!
+            :exec-args {:paths ["src/convert.clj"]}
+            ;; TODO: add all notebooks you want to have built ☝️
+            ;; if you just want to build one notebook, set `:index`
+
+            ;; optional list of aliases to include in the build
+            :nextjournal.clerk/aliases [:dev]}
+
            :cider-clj {:extra-deps {cider/cider-nrepl {:mvn/version "0.25.9"}}
                        :main-opts ["-m" "nrepl.cmdline" "-b" "0.0.0.0" "-p" "12345" "--middleware" "[cider.nrepl/cider-middleware]"]}}}
            
