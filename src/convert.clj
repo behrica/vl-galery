@@ -8,6 +8,9 @@
 
 (comment
   (clerk/serve! {:browse true})
+  (clerk/serve! {:browse true
+                 :watch-paths ["src"]})
+  
   (clerk/clear-cache!)
   :ok)
 
@@ -45,7 +48,6 @@
 
 
 (defn info->hiccup [collected-info]
-  (def collected-info collected-info)
   [:div
    [:a {:id (format "%s" (:name collected-info))}]
    [:h3  (:title collected-info)]
@@ -67,23 +69,19 @@
            :height "100px"}]]])
    
 
-;; # vega-lite example Gallery in EDN
+;; # vega-lite example Gallery in EDN 
 
 ^{:nextjournal.clerk/visibility {:code :hide
                                  :result :show}
   :nextjournal.clerk/viewer :html}
 (apply vector :table (map
                       (fn [infos]
-                        (def infos infos)
                         [:tr {:height "100px"}
-                              
-
                          (make-td (first infos))
                          (make-td (second infos))
                          (make-td (get (vec infos) 2))
                          (make-td (get (vec infos) 3))
                          (make-td (get (vec infos) 4))])
-
                        
                       (->> vl-infos
                            (remove #(contains? #{"bar_count_minimap" "geo_trellis"}
@@ -97,5 +95,4 @@
   :nextjournal.clerk/viewer :html}
 (apply vector :div (map
                     #(-> % collect-info info->hiccup)
-
                     vl-infos))
