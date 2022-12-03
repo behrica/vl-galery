@@ -20,12 +20,9 @@
  :aliases {
            :nextjournal/clerk
            {:exec-fn nextjournal.clerk/build!
-            :exec-args {:paths ["src/convert.clj"]}
-            ;; TODO: add all notebooks you want to have built ☝️
-            ;; if you just want to build one notebook, set `:index`
+            :exec-args {:paths ["src/convert.clj"]}}
+            ;; :nextjournal.clerk/aliases [:dev]
 
-            ;; optional list of aliases to include in the build
-            :nextjournal.clerk/aliases [:dev]}
 
            :cider-clj {:extra-deps {cider/cider-nrepl {:mvn/version "0.25.9"}}
                        :main-opts ["-m" "nrepl.cmdline" "-b" "0.0.0.0" "-p" "12345" "--middleware" "[cider.nrepl/cider-middleware]"]}}}
