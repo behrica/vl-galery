@@ -27,8 +27,8 @@
                        :level-1 k-1
                        :level-2 k-2))
               v-2))
-       (flatten)
-       (take 10000)))
+       (flatten)))
+       
 
 (defn collect-info [vl-info]
   (let [
