@@ -80,14 +80,16 @@
 
                          (make-td (first infos))
                          (make-td (second infos))
-                         (make-td (get (vec infos) 2))])
+                         (make-td (get (vec infos) 2))
+                         (make-td (get (vec infos) 3))
+                         (make-td (get (vec infos) 4))])
 
                        
                       (->> vl-infos
                            (remove #(contains? #{"bar_count_minimap" "geo_trellis"}
                                                (:name %)))
                            (map collect-info)
-                           (partition-all 3))))
+                           (partition-all 5))))
                                      
 
 ^{:nextjournal.clerk/visibility {:code :hide
