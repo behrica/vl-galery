@@ -32,7 +32,7 @@
 
 (defn collect-info [vl-info]
   (let [
-        vl-spec (slurp (format  "../vega-lite/examples/specs/%s.vl.json" (:name vl-info)))
+        vl-spec (slurp (format  "vl-specs/%s.vl.json" (:name vl-info)))
         edn-spec (puget/pprint-str
                   (json/parse-string vl-spec keyword)
                   {:map-delimiter ""})
