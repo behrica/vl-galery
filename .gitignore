@@ -2,3 +2,8 @@
 resources/public/notespace-files
 /resources/public/notespace-files
 .clj-kondo
+.lsp
+.portal
+.calva
+.nrepl-port
+public/build
