@@ -37,7 +37,7 @@
         edn-spec (puget/pprint-str
                   (json/parse-string vl-spec keyword)
                   {:map-delimiter ""})
-        img-file-url (format  "https://github.com/vega/vega-lite/raw/next/examples/compiled/%s.png" (:name vl-info))]
+        img-file-url (format  "https://github.com/vega/vega-lite/raw/next/examples/compiled/%s.svg" (:name vl-info))]
     (assoc vl-info
            :img-file-url img-file-url
            :vl-spec vl-spec
