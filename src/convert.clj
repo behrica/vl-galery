@@ -15,7 +15,6 @@
   :ok)
 
 
-
 (def vl-examples (-> (io/as-url  "https://raw.githubusercontent.com/vega/vega-lite/next/site/_data/examples.json")
                      clojure.java.io/reader
                      (json/parse-stream keyword)))
@@ -31,7 +30,6 @@
                        :level-2 k-2))
               v-2))
        (flatten)))
-       
 
 (defn collect-info [vl-info]
   (let [
@@ -58,37 +56,45 @@
    [:h5 "edn"]
    [:div (clerk/code  (:edn-spec collected-info))]])
 
+
+
 (defn make-td [vl-info]
-  [:td
+  [:td {:style {:padding "8px"
+                :border-bottom "1px solid #ddd"}}
    [:a {:href (format "#%s" (:name vl-info))}
     (:title vl-info)]
-   [:a {:href (format "#%s" (:name vl-info))}
-    [
-     :img {:src (:img-file-url vl-info)
-           :width "100px"
-           :height "100px"}]]])
-   
+   [:div {:style {:height "100px"
+                  :overflow-y "hidden"}}
+                  
+
+    [:a {:href (format "#%s" (:name vl-info))}
+     [
+      :img {:src (:img-file-url vl-info)
+            :width "100px" 
+            :height "100px"}]]]])
+    
 
 ;; # vega-lite example Gallery in EDN 
 
 ^{:nextjournal.clerk/visibility {:code :hide
                                  :result :show}
   :nextjournal.clerk/viewer :html}
-(apply vector :table (map
-                      (fn [infos]
-                        [:tr {:height "100px"}
-                         (make-td (first infos))
-                         (make-td (second infos))
-                         (make-td (get (vec infos) 2))
-                         (make-td (get (vec infos) 3))
-                         (make-td (get (vec infos) 4))])
-                       
-                      (->> vl-infos
-                           (remove #(contains? #{"bar_count_minimap" "geo_trellis"}
-                                               (:name %)))
-                           (map collect-info)
-                           (partition-all 5))))
+(apply vector :table {:style {:cellspacing 0}}
+       (map
+        (fn [infos]
+          [:tr {:height "100px"}
+           (make-td (first infos))
+           (make-td (second infos))
+           (make-td (get (vec infos) 2))
+           (make-td (get (vec infos) 3))
+           (make-td (get (vec infos) 4))])
+        (->> vl-infos
+             (remove #(contains? #{"bar_count_minimap" "geo_trellis"}
+                                 (:name %)))
+             (map collect-info)
+             (partition-all 5))))
                                      
+;; # Examples
 
 ^{:nextjournal.clerk/visibility {:code :hide
                                  :result :show}
