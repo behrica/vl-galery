@@ -1,6 +1,6 @@
 # vl-gallery
 
-The example galery of vega lite in Clojure / EDN format:
+The example galelry of vega lite in Clojure / EDN format:
 
 notespace version: https://behrica.github.io/vl-galery/convert/
 
