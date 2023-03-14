@@ -1,4 +1,4 @@
-# vl-galery
+# vl-gallery
 
 The example galery of vega lite in Clojure / EDN format:
 
