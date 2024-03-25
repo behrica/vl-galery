@@ -1,3 +1,6 @@
+# !!! Replaced by https://github.com/behrica/vl-gallery-edn !!!
+
+
 # vl-gallery
 
 The example galelry of vega lite in Clojure / EDN format:
